@@ -1,0 +1,24 @@
+
+{
+    "/support/*": {
+      "target": "https://desolate-retreat-47606.herokuapp.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/asset/*": {
+      "target": "https://desolate-retreat-47606.herokuapp.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/userManagements/*": {
+      "target": "https://desolate-retreat-47606.herokuapp.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/userManagments": "https://desolate-retreat-47606.herokuapp.com/userManagements"
+      }
+    }
+  }
