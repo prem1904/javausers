@@ -4,13 +4,19 @@
       "target": "https://desolate-retreat-47606.herokuapp.com",
       "secure": false,
       "logLevel": "debug",
-      "changeOrigin": true
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/support": "https://desolate-retreat-47606.herokuapp.com/support"
+      }
     },
     "/asset/*": {
       "target": "https://desolate-retreat-47606.herokuapp.com",
       "secure": false,
       "logLevel": "debug",
-      "changeOrigin": true
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/userManagments": "https://desolate-retreat-47606.herokuapp.com/asset"
+      }
     },
     "/userManagements/*": {
       "target": "https://desolate-retreat-47606.herokuapp.com",
@@ -19,6 +25,15 @@
       "changeOrigin": true,
       "pathRewrite": {
         "^/userManagments": "https://desolate-retreat-47606.herokuapp.com/userManagements"
+      }
+    },
+    "/assetManagements/*": {
+      "target": "https://desolate-retreat-47606.herokuapp.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/assetManagements": "https://desolate-retreat-47606.herokuapp.com/assetManagements"
       }
     }
   }

@@ -1,7 +1,28 @@
-{{user.username}}
-{{user.email}}
-<div *ngFor="let role of user.role">
-    {{role.rolename}}
-    {{role.roledesc}}
-
+<div class="container" style="display: block;">
+   <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+<div class="row">
+   <div class="col sm-4">
+      <table class="table table-striped"> 
+         <thead> 
+            <tr> 
+               <th>Asset Name</th> 
+               <th>Price</th> 
+               <th>Category</th> 
+               <th>Manufacturer</th> 
+               <th>Buy Date</th> 
+            </tr> 
+         </thead> 
+         <tbody> 
+           
+            <tr *ngFor="let entry of asset"> 
+               <th scope="row"><a routerLink="../details/{{ entry.quickreponse}}">{{ entry.assetname | uppercase}}</a></th> 
+               <th>{{ entry.price }}</th> 
+               <td>{{ entry.category }}</td> 
+               <td>{{ entry.manufacturer }}</td> 
+               <td>{{ entry.purchasedate | date: 'short' }}</td> 
+            </tr> 
+         </tbody> 
+      </table> 
+</div>
+</div>
 </div>

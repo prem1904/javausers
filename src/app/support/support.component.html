@@ -1,0 +1,25 @@
+<form class="row g-3" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+      <label for="supportdesc" class="form-label">Description</label>
+      <input type="text" class="form-control" [(ngModel)]="supportdesc" name="supportdesc">
+    </div>
+    <div class="col-md-6">
+      <label for="supportcost" class="form-label">Cost</label>
+      <input type="number" class="form-control" [(ngModel)]="supportcost" name="supportcost">
+    </div>
+    <div class="col-12">
+      <label for="assetid" class="form-label">Asset</label>
+      <input type="text" class="form-control" [(ngModel)]="assetid" name="assetid">
+    </div>
+    <div class="col-12">
+      <label for="customerid" class="form-label">Customer</label>
+      <input type="text" class="form-control" [(ngModel)]="customerid" name="customerid">
+    </div>
+    <div class="col-md-6">
+      <label for="providerid" class="form-label">Provider</label>
+      <input type="text" class="form-control" [(ngModel)]="providerid" name="providerid">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </form>
