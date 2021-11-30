@@ -38,7 +38,7 @@ export class DetailPageComponent implements OnInit {
     this.isLoadingResults=true;
    
     this.http.get<asset>("/asset?id="+ data.uid ).toPromise().then((data:asset)=>{
-      this.assetid="https://desolate-retreat-47606.herokuapp.com/support/"+data.customerid+"/"+data.assetid+"?id=61a3a3af7a4858447c96e7c7 & supportdate=2021-12-01";
+      this.assetid="https://floating-depths-26439.herokuapp.com/access/"+data.customerid+"/"+data.assetid;
       this.http.get<support[]>("/support/customer?customerid="+data.customerid).toPromise().then((data:support[])=>{
         this.support=data;
         this.isLoadingResults=false;
@@ -46,7 +46,7 @@ export class DetailPageComponent implements OnInit {
     });
  })
    
-
+ 
   
 
    

@@ -7,7 +7,7 @@ import { SupportComponent } from './support/support.component';
 const routes: Routes = [
   {path:"dashboard",component:DashboardComponent},
   {path:"details/:uid",component:DetailPageComponent},
-  {path:"access",component:SupportComponent}
+  {path:"access/:uid/:vid",component:SupportComponent}
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, FormGroupName } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { support } from '../asset/support';
 
 @Component({
@@ -23,7 +23,7 @@ export class SupportComponent implements OnInit {
  nextinspection:Date=new Date;
  
 
-  constructor(private formbuilder:FormBuilder ,private http:HttpClient, private router :Router) { }
+  constructor(private formbuilder:FormBuilder ,private http:HttpClient, private router :Router, private snapshot:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -37,13 +37,19 @@ export class SupportComponent implements OnInit {
       "providerid":this.providerid
     }).value);
     console.log(data);
-
-    this.http.post("/support/"+this.customerid+"/"
-    +this.assetid+"/?id="+this.providerid+"&supportdate=2021-12-01",data)
-    .toPromise().then((data:any)=>{
-      let path ='/dashboard';
-      this.router.navigate([path]);
-    });
+    this.snapshot.params.subscribe((data:any)=>{
+      this.customerid=data.uid;
+      this.assetid=data.vid;
+      this.http.post("/support/"+data.uid+"/"
+      +data.vid+"/?id="+this.providerid+"&supportdate=2021-12-01",data)
+      .toPromise().then((data:any)=>{
+        let path ='/dashboard';
+        this.router.navigate([path]);
+      });
+    }
+    )
+ 
+   
   }
 
 }
