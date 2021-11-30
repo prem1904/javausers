@@ -75,11 +75,11 @@
           "configurations": {
             "production": {
               "browserTarget": "review-dashboard:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "proxyConfig": "src/proxy.conf.js"
             },
             "development": {
               "browserTarget": "review-dashboard:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "proxyConfig": "src/proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"
