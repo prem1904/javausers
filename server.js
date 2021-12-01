@@ -1,10 +1,11 @@
-//Install express server
 const express = require('express');
-const path = require('path');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const app = express();
+
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('./webpack.config.js');
-    const app = express();
+
 
 const compiler = Webpack(webpackConfig);
 const devServerOptions = { ...webpackConfig.devServer, open: true };
@@ -16,9 +17,5 @@ const runServer = async () => {
 };
 
 runServer();
-
-
-
-
-
-
+app.use("*", createProxyMiddleware({ target: "http://localhost:8081", ws: true })) 
+app.listen(process.env.PORT || 8080);
