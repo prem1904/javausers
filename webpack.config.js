@@ -5,11 +5,12 @@ module.exports = {
    
     devServer: {
     compress: true,
-    disableHostCheck: true,
+    client: {
+        webSocketURL: 'ws://0.0.0.0:8081/ws',
+      },
       static: {
         directory: path.join(__dirname, '/dist/review-dashboard'),
       },
-      port: 8081,
       proxy: {
         '/userManagements/*': {
           target: 'https://desolate-retreat-47606.herokuapp.com',
