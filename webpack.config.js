@@ -3,9 +3,6 @@ module.exports = {
     entry: './src/index.js',
     mode: 'production',
     devServer: {
-        client: {
-            reconnect: true,
-          },
         proxy: {
             '/userManagements/*': {
               target: 'https://desolate-retreat-47606.herokuapp.com/',
@@ -40,9 +37,13 @@ module.exports = {
               },
             
           },
-        port:8080,
         static: {
             directory: path.join(__dirname, '/dist/review-dashboard'),
          },
+         port:8080,
+         onListening: function (devServer) {
+          const port = devServer.server.address().port;
+          console.log('Listening on port:', port);
+         }
     },
   };
