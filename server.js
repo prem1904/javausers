@@ -22,6 +22,6 @@ app.use("*", createProxyMiddleware(
     ws: true ,
      changeOrigin: true,
      router: {
-    'dev.localhost:8081': 'http://localhost:8080',
+    'dev.localhost:3000': 'http://localhost:8080',
   },})) 
-app.listen(process.env.PORT || 8080)
+app.listen(process.env.PORT || 3000)
