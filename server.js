@@ -1,16 +1,20 @@
 //Install express server
 const express = require('express');
 const path = require('path');
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackConfig = require('./webpack.config.js');
 
-const app = express();
+const compiler = Webpack(webpackConfig);
+const devServerOptions = { ...webpackConfig.devServer, open: true };
+const server = new WebpackDevServer(devServerOptions, compiler);
 
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/review-dashboard'));
+const runServer = async () => {
+  console.log('Starting server...');
+  await server.start();
+};
 
-app.get('/*', function(req,res) {
-    
-res.sendFile(path.join(__dirname+'/dist/review-dashboard/index.html'));
-});
+runServer();
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+
+

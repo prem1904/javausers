@@ -15,7 +15,7 @@
       "logLevel": "debug",
       "changeOrigin": true,
       "pathRewrite": {
-        "^/userManagments": "https://desolate-retreat-47606.herokuapp.com/asset"
+        "^/asset": "https://desolate-retreat-47606.herokuapp.com/asset"
       }
     },
     "/userManagements/*": {
