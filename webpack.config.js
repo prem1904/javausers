@@ -1,9 +1,9 @@
 const path = require('path');
 module.exports = {
     entry:'./src/index.js',
-    mode: 'development',
-   
+    mode: 'development',   
     devServer: {
+      historyApiFallback: true,
     https: true,
     compress: true,
     client: {

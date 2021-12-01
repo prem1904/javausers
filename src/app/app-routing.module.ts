@@ -4,10 +4,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { SupportComponent } from './support/support.component';
 
+
 const routes: Routes = [
   {path:"dashboard",component:DashboardComponent},
   {path:"details/:uid",component:DetailPageComponent},
-  {path:"access/:uid/:vid",component:SupportComponent}
+  {path:"access/:uid/:vid",component:SupportComponent},
+  { path: '**', component: DashboardComponent }
 ];
 
 @NgModule({
