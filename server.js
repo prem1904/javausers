@@ -21,6 +21,7 @@ app.use("*", createProxyMiddleware(
     { target: "https://localhost:8080", 
     ws: true ,
      changeOrigin: true,
+     secure:false,
      router: {
     'dev.localhost:3000': 'https://localhost:8080',
   },})) 
