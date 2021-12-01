@@ -5,6 +5,7 @@ module.exports = {
    
     devServer: {
     compress: true,
+    disableHostCheck: true,
       static: {
         directory: path.join(__dirname, '/dist/review-dashboard'),
       },
