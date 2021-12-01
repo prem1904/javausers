@@ -4,6 +4,7 @@ module.exports = {
     mode: 'development',
    
     devServer: {
+    https: true,
     compress: true,
     client: {
         webSocketURL: 'ws://0.0.0.0:8080/ws',
