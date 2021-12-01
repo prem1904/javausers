@@ -4,6 +4,7 @@ const path = require('path');
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('./webpack.config.js');
+    const app = express();
 
 const compiler = Webpack(webpackConfig);
 const devServerOptions = { ...webpackConfig.devServer, open: true };
@@ -20,4 +21,4 @@ server.startCallback(() => {
 });
 
 
-
+app.listen(process.env.PORT || 8080);
