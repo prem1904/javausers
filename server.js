@@ -18,10 +18,10 @@ const runServer = async () => {
 
 runServer();
 app.use("*", createProxyMiddleware(
-    { target: "http://localhost:8080", 
+    { target: "https://localhost:8080", 
     ws: true ,
      changeOrigin: true,
      router: {
-    'dev.localhost:3000': 'http://localhost:8080',
+    'dev.localhost:3000': 'https://localhost:8080',
   },})) 
 app.listen(process.env.PORT || 3000)
