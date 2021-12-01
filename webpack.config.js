@@ -34,7 +34,7 @@ module.exports = {
             target: 'https://desolate-retreat-47606.herokuapp.com',
             changeOrigin:true,
             secure:false,
-            pathRewrite: { '^/asset': 'https://desolate-retreat-47606.herokuapp.com/assetManagements' },
+            pathRewrite: { '^/assetManagements': 'https://desolate-retreat-47606.herokuapp.com/assetManagements' },
           },
       },
     },
