@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-    entry: './src/main.ts',
+    entry: './src/index.js',
     mode: 'development',
     devServer: {
         proxy: {

@@ -15,6 +15,9 @@ const runServer = async () => {
 };
 
 runServer();
+server.startCallback(() => {
+  console.log('Successfully started server on http://localhost:8080');
+});
 
 
 
