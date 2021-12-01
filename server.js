@@ -18,4 +18,4 @@ const runServer = async () => {
 
 runServer();
 app.use("*", createProxyMiddleware({ target: "http://localhost:8081", ws: true })) 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 8080)
