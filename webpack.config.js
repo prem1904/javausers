@@ -3,6 +3,9 @@ module.exports = {
     entry: './src/index.js',
     mode: 'production',
     devServer: {
+        client: {
+            reconnect: true,
+          },
         proxy: {
             '/userManagements/*': {
               target: 'https://desolate-retreat-47606.herokuapp.com/',
