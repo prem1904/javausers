@@ -6,7 +6,7 @@ module.exports = {
     devServer: {
     compress: true,
     client: {
-        webSocketURL: 'ws://0.0.0.0:8081/ws',
+        webSocketURL: 'ws://0.0.0.0:8080/ws',
       },
       static: {
         directory: path.join(__dirname, '/dist/review-dashboard'),

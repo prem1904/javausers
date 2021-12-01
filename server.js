@@ -18,7 +18,7 @@ const runServer = async () => {
 
 runServer();
 app.use("*", createProxyMiddleware(
-    { target: "http://localhost:8081", 
+    { target: "http://localhost:8080", 
     ws: true ,
      changeOrigin: true,
      router: {
