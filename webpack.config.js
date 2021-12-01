@@ -2,9 +2,9 @@ const path = require('path');
 module.exports = {
     entry:'./src/index.js',
     mode: 'development',
-    compress: true,
-    public: 'floating-depths-26439.herokuapp.com',
+   
     devServer: {
+    compress: true,
       static: {
         directory: path.join(__dirname, '/dist/review-dashboard'),
       },
