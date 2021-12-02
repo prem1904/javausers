@@ -17,7 +17,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SupportComponent } from './support/support.component';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { DeliveryChallanComponent } from './delivery-challan/delivery-challan.component';
+import {MatDatepickerModule,} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from'@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,20 +30,22 @@ import { FormBuilder, FormsModule } from '@angular/forms';
     DashboardComponent,
     DetailPageComponent,
     SupportComponent,
+    DeliveryChallanComponent,
+    
     
     
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    BrowserModule,MatFormFieldModule,MatInputModule,
+    AppRoutingModule,ReactiveFormsModule,
     HttpClientModule,
     QRCodeModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,MatDatepickerModule,MatNativeDateModule,
     MatTableModule,MatIconModule,MatButtonModule,MatProgressSpinnerModule,FormsModule
     
     
   ],
-  providers: [DataService,FormBuilder],
+  providers: [DataService,FormBuilder,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

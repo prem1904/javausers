@@ -1,0 +1,29 @@
+<div class="container-sm">
+  <qr-code value="google.com" [size]="100" [level]="'M'" ></qr-code>
+<table class="table table-striped">
+  <thead class="sticky-top table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th class="wrap" style="align-self: stretch!important;">Description</th>
+      <th class="wrap"style="align-self: stretch!important;">Quantity</th>
+      <th class="wrap">Rate</th>
+      <th st>Action</th>
+    </tr>
+  </thead>
+  <tbody>   
+    <tr *ngFor="let item of items; let row=index" >
+      <th scope="row" style="display: flex;flex-direction: column!important;;">{{row+1}}</th>    
+      <td class="wrap" ><input type="text" [(ngModel)]="item.desc" placeholder="description"/></td>
+
+      <td class="wrap"><input type="text" [(ngModel)]="item.qty" placeholder="qty"/></td>
+      <td class="wrap" ><input type="text" [(ngModel)]="item.rate" placeholder="rate"/></td>
+      <td>
+        <button mat-icon-button (click)="deleteItem(row)" ><mat-icon>delete </mat-icon> </button>
+      </td>
+    </tr> 
+    <tr>
+    <button mat-icon-button (click)="addItem()" class="fixed-bottom"><mat-icon>add </mat-icon> </button>
+  </tr>
+  </tbody>
+</table>
+</div>

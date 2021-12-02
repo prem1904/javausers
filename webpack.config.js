@@ -3,7 +3,7 @@ module.exports = {
     entry:'./src/index.js',
     mode: 'development',   
     devServer: {
-      historyApiFallback: true,
+    historyApiFallback: true,
     https: true,
     compress: true,
     client: {

@@ -17,6 +17,9 @@ const runServer = async () => {
 };
 
 runServer();
+/** If you have error creating proxy <app-url> to localhost  
+ * Heroku internally redirect the Server port 8080 .
+ *  For that reason we need to open listener  port(I used 3000) redirect through http-proxy-middleware*/
 app.use("/*", createProxyMiddleware(
     { target: "https://localhost:8080", 
     ws: true ,
