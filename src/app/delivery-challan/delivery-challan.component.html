@@ -1,6 +1,6 @@
 <div class="container-sm">
   <qr-code value="google.com" [size]="100" [level]="'M'" ></qr-code>
-<table class="table table-striped">
+<table class="table table-striped table-hover">
   <thead class="sticky-top table-dark">
     <tr>
       <th scope="col">#</th>
@@ -12,7 +12,7 @@
   </thead>
   <tbody>   
     <tr *ngFor="let item of items; let row=index" >
-      <th scope="row" style="display: flex;flex-direction: column!important;;">{{row+1}}</th>    
+      <th scope="row" >{{row+1}}</th>    
       <td class="wrap" ><input type="text" [(ngModel)]="item.desc" placeholder="description"/></td>
 
       <td class="wrap"><input type="text" [(ngModel)]="item.qty" placeholder="qty"/></td>
@@ -20,10 +20,8 @@
       <td>
         <button mat-icon-button (click)="deleteItem(row)" ><mat-icon>delete </mat-icon> </button>
       </td>
-    </tr> 
-    <tr>
-    <button mat-icon-button (click)="addItem()" class="fixed-bottom"><mat-icon>add </mat-icon> </button>
-  </tr>
-  </tbody>
+    </tr>     
+  </tbody> 
 </table>
+<button mat-icon-button (click)="addItem()" class="fixed-bottom"><mat-icon>add </mat-icon> </button>
 </div>
