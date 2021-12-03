@@ -32,6 +32,10 @@ export class DeliveryChallanComponent implements OnInit {
     }
   }
 
+  printCall(){
+    window.print();
+  }
+
 
   getCost(){
      this.subcost=this.items.map(t => t.cost).reduce((acc, value) => acc + value, 0);

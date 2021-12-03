@@ -1,4 +1,5 @@
 <div class="container-sm">
+  
   <input  class="text-end" style="text-align: right;" type="date" [(ngModel)]="today" style="width: 100%;" >
   <div class="row justify-content-md-center">
     <div class="col-md-auto"> 
@@ -58,7 +59,7 @@
       </td>
     </tr>   
   </tbody> 
-  <tfoot>
+  <tfoot class="sticky-top">
     <tr class="foo">
       <th scope="row"></th>
       <td class="wrap">Total Quantity</td>
@@ -92,7 +93,16 @@
     <button type="button" class="btn btn-primary">Total</button>
     <button type="button" class="btn btn-primary">{{totalcost}}</button>
   </div> 
+  <div class="position-relative">
+  <div class="position-absolute bottom-0 end-0 " style="margin-right: 10px; margin-bottom: 45px;">
+    <button (click)="printCall()" mat-fab color="primary">
+      <mat-icon>print</mat-icon>
+    </button>
+  </div>
+</div>
 </div>
 
 </div>
+
+
 
