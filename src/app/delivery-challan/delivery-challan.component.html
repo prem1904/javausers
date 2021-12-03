@@ -1,5 +1,5 @@
 <div class="container-sm">
-  <input  class="text-end" style="text-align: right;" type="date" [(ngModel)]="dat" style="width: 100%;" >
+  <input  class="text-end" style="text-align: right;" type="date" [(ngModel)]="today" style="width: 100%;" >
   <div class="row justify-content-md-center">
     <div class="col-md-auto"> 
       <ul class="list-group list-group-flush">
@@ -41,7 +41,7 @@
       <th class="wrap" style="align-self: stretch!important;">Description</th>
       <th class="wrap" style="align-self: stretch!important;">Quantity</th>
       <th class="wrap" style="align-self: stretch!important;">Cost</th>
-      <th class="wrap" style="align-self: stretch!important;">Total Cost</th>
+      <th class="wrap" style="align-self: stretch!important;">Item Cost</th>
      
       <th class="d-print-none">Action</th>
     </tr>
@@ -58,40 +58,41 @@
       </td>
     </tr>   
   </tbody> 
-  <tfoot class="foo">
-    <tr>
+  <tfoot>
+    <tr class="foo">
       <th scope="row"></th>
       <td class="wrap">Total Quantity</td>
       <td class="wrap">{{getQuantity()}}</td>
       <td class="wrap">Sub Total</td>
-      <td class="wrap">{{getTotalCost()}}</td>
+      <td class="wrap">{{getCost()}}</td>
+      <td class="wrap"> </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <button mat-icon-button (click)="addItem()" class="fixed-bottom d-print-none"><mat-icon>add </mat-icon> </button>
+      </th>
+      <td class="wrap">GST</td>
+      <td class="wrap"><input type="number" [(ngModel)]="gst" value=28/></td>
+      <td class="wrap">Total</td>
+      <td class="wrap">{{totalcost}}</td>
       <td class="wrap"> </td>
     </tr>
   </tfoot>
 </table>
-<button mat-icon-button (click)="addItem()" class="fixed-bottom d-print-none"><mat-icon>add </mat-icon> </button>
-<nav class="navbar navbar-dark bg-dark fixed-bottom" style="height:-100px;">
-  <div class="container-fluid ">
-    <button mat-icon-button class="navbar-brand d-print-none" (click)="addItem()" type="button"><mat-icon>add </mat-icon></button>
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-bottom: 0px; padding-top: 0px;">
-      <li class="nav-item">
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-          <div class="btn-group me-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-secondary">Qty</button>
-            <button type="button" class="btn btn-secondary">{{getQuantity()}}</button>
-          </div>
-          <div class="btn-group me-2" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-primary">Total</button>
-            <button type="button" class="btn btn-primary">{{getTotalCost()}}</button>
-          </div>
-          <div class="btn-group" role="group" aria-label="Third group">
-            <button type="button" class="btn btn-info">Tax</button>
-            <button type="button" class="btn btn-info">0</button>
-          </div>
-        </div>
-   </li>
-    </ul>
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary">Qty</button>
+    <button type="button" class="btn btn-secondary">{{getQuantity()}}</button>
   </div>
-</nav>
+  <div class="btn-group" role="group" aria-label="Third group">
+    <button type="button" class="btn btn-info">Tax</button>
+    <button type="button" class="btn btn-info">{{tax}}</button>
+  </div>
+  <div class="btn-group me-2" role="group" aria-label="Second group">
+    <button type="button" class="btn btn-primary">Total</button>
+    <button type="button" class="btn btn-primary">{{totalcost}}</button>
+  </div> 
+</div>
+
 </div>
 
