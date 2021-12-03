@@ -27,8 +27,8 @@
     <div class="col-4"> 
       <div class="vstack gap-3">
         <div class="text-end"><qr-code value="google.com" [size]="100" [level]="'M'" ></qr-code></div>
-        <input  class="text-end" type="text" style="width: 100%;" placeholder="Challan No" >        
-        <input  class="text-end" type="text" style="width: 100%;" placeholder="GSTIN"  value="33AFMPN99HL2ZX">
+        <input  class="text-end" type="text" style="width: 100%;" placeholder="Challan No" value="Challan No: " >        
+        <input  class="text-end" type="text" style="width: 100%;" placeholder="GSTIN"  value="GSTIN: 33AFMPN99HL2ZX">
         <div>
       </div>
       </div>
@@ -80,29 +80,44 @@
     </tr>
   </tfoot>
 </table>
-<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+<div class="card" style="width: 25rem; margin-bottom: 20px;">
+  <div class="card-header">
+    Transport Information
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><textarea style="width: 100%;" matInput cdkTextareaAutosize>Site Details....</textarea></li>
+    <li class="list-group-item"><input style="width: 100%;"  type="text"  placeholder="Add your Vehicle Details.."/></li>
+  </ul>
+</div>
+<div class="btn-toolbar justify-content-between d-print-none" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
-    <button type="button" class="btn btn-secondary">Qty</button>
-    <button type="button" class="btn btn-secondary">{{getQuantity()}}</button>
+    <button type="button" class="btn btn-outline-secondary">Qty</button>
+    <button type="button" class="btn btn-outline-secondary">{{getQuantity()}}</button>
   </div>
   <div class="btn-group" role="group" aria-label="Third group">
-    <button type="button" class="btn btn-info">Tax</button>
-    <button type="button" class="btn btn-info">{{tax}}</button>
+    <button type="button" class="btn btn-outline-secondary">Tax</button>
+    <button type="button" class="btn btn-outline-secondary">{{tax}}</button>
   </div>
   <div class="btn-group me-2" role="group" aria-label="Second group">
-    <button type="button" class="btn btn-primary">Total</button>
-    <button type="button" class="btn btn-primary">{{totalcost}}</button>
+    <button type="button" class="btn btn-outline-secondary">Total</button>
+    <button type="button" class="btn btn-outline-secondary">{{totalcost}}</button>
   </div> 
   <div class="position-relative">
   <div class="position-absolute bottom-0 end-0 " style="margin-right: 10px; margin-bottom: 45px;">
-    <button (click)="printCall()" mat-fab color="primary">
+    <button (click)="printCall()" mat-fab color="primary" class="d-print-none">
       <mat-icon>print</mat-icon>
     </button>
   </div>
 </div>
 </div>
-
 </div>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-text">
+      For Raja Traders
+    </span>
+  </div>
+</nav>
 
 
 

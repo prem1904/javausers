@@ -23,6 +23,7 @@ export class DeliveryChallanComponent implements OnInit {
   totalcost=0.0;
   tax=0.0;
   gst=28.0;
+  invoice="INV"+new Date().getMilliseconds();
 
   constructor( public datepipe: DatePipe) { }
 
