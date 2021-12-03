@@ -1,4 +1,8 @@
-
+input, textarea{
+    border: solid white !important;
+    overflow: hidden;
+    border-width: 1px 0 0 1px !important;
+}
     .hstack {
         display: flex;
         flex-direction: row;
@@ -17,14 +21,25 @@
         align-items: center!important;
         align-self: stretch!important;
     }
-    
+    .foo{
+        display: none;
+    }
 }
 @media screen and (min-width :739px) {
+    .navbar{
+        display: none;
+    }
  
    
 }
+.example-full-width {
+    width: 100%;
+  }
 
 @media print{
+    .foo{
+        display:table-footer-group;
+    }
     .td{
         display: block;
     }

@@ -1,5 +1,5 @@
 <div class="container-sm">
-  <input  class="text-end" style="text-align: right;" type="date" style="width: 100%;" >
+  <input  class="text-end" style="text-align: right;" type="date" [(ngModel)]="dat" style="width: 100%;" >
   <div class="row justify-content-md-center">
     <div class="col-md-auto"> 
       <ul class="list-group list-group-flush">
@@ -11,15 +11,14 @@
         <li class="list-group-item">rajatradersklv@gmail.com</li>
         <li class="list-group-item">0452-2428205</li>
         <li class="list-group-item"> </li>
-        </figure>
-        
+        </figure>        
       </ul>
     </div>
   </div>
   <div class="row justify-content-between">
     <div class="col-4"> <ul class="list-group list-group-flush">
-      <li class="list-group-item blockquote"><input  type="text" style="width: 100%;" placeholder="Challan No" value="Raja Mohammed"></li>
-      <li class="list-group-item"><textarea value=""> 3/43 R Main road , Periya Kadai veethi,Keelavalavu-625102</textarea></li>
+      <li class="list-group-item"><input type="text" value="Raja Mohammed"></li>
+      <li class="list-group-item"><textarea matInput cdkTextareaAutosize>3/43 R Main road , Periya Kadai veethi,Keelavalavu-625102</textarea></li>
       <li class="list-group-item"><input type="email" value="rajatradersklv@gmail.com"/></li>
       <li class="list-group-item"><input type="tel" value="0452-2428205"/></li>
       <li class="list-group-item"> </li>
@@ -35,29 +34,64 @@
     </div>
   </div>
  
- 
 <table class="table table-striped table-hover">
   <thead class="sticky-top table-dark">
     <tr>
       <th scope="col">#</th>
       <th class="wrap" style="align-self: stretch!important;">Description</th>
-      <th class="wrap"style="align-self: stretch!important;">Quantity</th>
-      <th class="wrap">Rate</th>
-      <th st>Action</th>
+      <th class="wrap" style="align-self: stretch!important;">Quantity</th>
+      <th class="wrap" style="align-self: stretch!important;">Cost</th>
+      <th class="wrap" style="align-self: stretch!important;">Total Cost</th>
+     
+      <th class="d-print-none">Action</th>
     </tr>
   </thead>
   <tbody>   
-    <tr *ngFor="let item of items; let row=index" >
+    <tr *ngFor="let item of items; let row=index" id="data" >
       <th scope="row" >{{row+1}}</th>    
-      <td class="wrap" ><input type="text" [(ngModel)]="item.desc" placeholder="description"/></td>
-
-      <td class="wrap"><input type="text" [(ngModel)]="item.qty" placeholder="qty"/></td>
-      <td class="wrap" ><input type="text" [(ngModel)]="item.rate" placeholder="rate"/></td>
-      <td>
-        <button mat-icon-button (click)="deleteItem(row)" ><mat-icon>delete </mat-icon> </button>
+      <td class="wrap" ><input type="text" [(ngModel)]="item.desc" placeholder="Add your item.."/></td>
+      <td class="wrap"><input type="number" (keyup.enter)="saveItem(row)" (blur)="saveItem(row)" [(ngModel)]="item.qty"/></td>
+      <td class="wrap" ><input type="number" (keyup.enter)="saveItem(row)" (blur)="saveItem(row)" [(ngModel)]="item.rate"/></td>
+      <td class="wrap" >{{item.cost}}</td>
+      <td classs="d-print-none">
+        <button mat-icon-button (click)="deleteItem(row)"class="d-print-none" ><mat-icon>delete </mat-icon> </button>
       </td>
-    </tr>     
+    </tr>   
   </tbody> 
+  <tfoot class="foo">
+    <tr>
+      <th scope="row"></th>
+      <td class="wrap">Total Quantity</td>
+      <td class="wrap">{{getQuantity()}}</td>
+      <td class="wrap">Sub Total</td>
+      <td class="wrap">{{getTotalCost()}}</td>
+      <td class="wrap"> </td>
+    </tr>
+  </tfoot>
 </table>
-<button mat-icon-button (click)="addItem()" class="fixed-bottom"><mat-icon>add </mat-icon> </button>
+<button mat-icon-button (click)="addItem()" class="fixed-bottom d-print-none"><mat-icon>add </mat-icon> </button>
+<nav class="navbar navbar-dark bg-dark fixed-bottom" style="height:-100px;">
+  <div class="container-fluid ">
+    <button mat-icon-button class="navbar-brand d-print-none" (click)="addItem()" type="button"><mat-icon>add </mat-icon></button>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-bottom: 0px; padding-top: 0px;">
+      <li class="nav-item">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-secondary">Qty</button>
+            <button type="button" class="btn btn-secondary">{{getQuantity()}}</button>
+          </div>
+          <div class="btn-group me-2" role="group" aria-label="Second group">
+            <button type="button" class="btn btn-primary">Total</button>
+            <button type="button" class="btn btn-primary">{{getTotalCost()}}</button>
+          </div>
+          <div class="btn-group" role="group" aria-label="Third group">
+            <button type="button" class="btn btn-info">Tax</button>
+            <button type="button" class="btn btn-info">0</button>
+          </div>
+        </div>
+   </li>
+    </ul>
+  </div>
+</nav>
 </div>
+
