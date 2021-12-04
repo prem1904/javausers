@@ -1,12 +1,12 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
+import { Customer, Item, ItemCost } from '../user/user/delivery';
+import { ActivatedRoute } from '@angular/router';
 
-export interface Item{
-  desc:string;
-  qty:number;
-  rate:number;
-  cost:number;
-}
+
 
 @Component({
   selector: 'app-delivery-challan',
@@ -15,22 +15,28 @@ export interface Item{
 })
 export class DeliveryChallanComponent implements OnInit {
   items:Item[]=[];
+  itemcost:ItemCost=<ItemCost>{};
+  customer:Customer=<Customer>{};
   desc:string="";
   today=this.datepipe.transform(new Date, 'yyyy-MM-dd');
-  qty:number=0.0;
-  rate=0.0;
-  subcost:number=0.0;
-  totalcost=0.0;
-  tax=0.0;
-  gst=28.0;
-  invoice="INV"+new Date().getMilliseconds();
+ 
+  
 
-  constructor( public datepipe: DatePipe) { }
+  constructor( public datepipe: DatePipe, private formBuilder:FormBuilder,private http:HttpClient,private snapshot:ActivatedRoute) { 
+    this.itemcost.gst=28.0;
+    this.customer.no="INV"+new Date().getMilliseconds();
+
+  }
 
   ngOnInit(): void {
-    if(this.items.length==0){
-    this.items.push({desc:"",qty:0.0 ,rate:0.0,cost:0.0});
-    }
+
+    this.snapshot.params.subscribe((data:any)=>{
+      this.http.get("/deliveries/"+data.uid).subscribe((data:any)=>{
+           this.items=data.item;
+           this.itemcost=data.itemCost;
+           this.customer=data.customer;
+      })
+    });
   }
 
   printCall(){
@@ -39,19 +45,21 @@ export class DeliveryChallanComponent implements OnInit {
 
 
   getCost(){
-     this.subcost=this.items.map(t => t.cost).reduce((acc, value) => acc + value, 0);
-     this.calculateCost(this.gst);
-     return this.subcost;
+     this.itemcost.subtotal=this.items.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+     this.calculateCost(this.itemcost.gst);
+     return  this.itemcost.subtotal;
   }
 
   calculateCost(gst:number){
-     this.tax=(gst* this.subcost)/100;
-     this.totalcost =this.tax+this.subcost;  
+     this.itemcost.tax=(gst* this.itemcost.subtotal)/100;
+     this.itemcost.total =this.itemcost.tax+this.itemcost.subtotal;  
 
   }
 
   getQuantity(){
-     return this.items.map(t => t.qty).reduce((acc, value) => acc + value, 0);
+
+    this.itemcost.qty=this.items.map(t => t.qty).reduce((acc, value) => acc + value, 0);
+    return this.itemcost.qty;
   }
   
 
@@ -62,10 +70,25 @@ export class DeliveryChallanComponent implements OnInit {
   }
   addItem(){
     this.items.push({desc:"",qty:0.0 ,rate:0.0,cost:0.0});
+    console.log(this.items);
   }
 
   deleteItem(row:number){
     this.items.splice(row,1)
+  }
+  
+  onSubmit(){
+    let data : any= Object.assign((  this.formBuilder.group({
+      "deliveryid":this.customer.no,
+      "issuedate": this.today,
+      "customer": this.customer,
+      "item":[this.items],
+      "itemCost":this.itemcost
+
+    }).value));
+     this.http.post("/deliveries",data).toPromise().then((data:any)=>{
+       console.log(data);
+     })
   }
 
 }

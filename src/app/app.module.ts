@@ -31,9 +31,7 @@ import { DatePipe } from '@angular/common';
     DashboardComponent,
     DetailPageComponent,
     SupportComponent,
-    DeliveryChallanComponent,
-    
-    
+    DeliveryChallanComponent    
     
   ],
   imports: [

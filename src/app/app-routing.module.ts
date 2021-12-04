@@ -10,7 +10,9 @@ const routes: Routes = [
   {path:"dashboard",component:DashboardComponent},
   {path:"details/:uid",component:DetailPageComponent},
   {path:"access/:uid/:vid",component:SupportComponent},
-  { path: '**', component: DeliveryChallanComponent}
+  { path: "delivery/:uid", component: DeliveryChallanComponent},
+  { path: '**', component: DeliveryChallanComponent},
+ 
 ];
 
 @NgModule({

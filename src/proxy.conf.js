@@ -4,7 +4,8 @@ const PROXY_CONFIG = [
             "/support",
             "/asset",
             "/userManagements",
-            "/assetManagements"
+            "/assetManagements",
+            "/deliveries"
 
         ],
         target: "https://desolate-retreat-47606.herokuapp.com",

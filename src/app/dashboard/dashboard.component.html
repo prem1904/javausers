@@ -1,6 +1,33 @@
 <div class="container" style="display: block;">
    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
 <div class="row">
+   <form class="form-inline my-2 my-lg-0" (ngSubmit)="searchInvoice()">
+      <input class="form-control mr-sm-2" type="search" [(ngModel)]="search" name="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>
+    </form>
+   <div class="col sm-4">
+      <table class="table table-striped"> 
+         <thead> 
+            <tr> 
+               <th>Invoice No.</th> 
+               <th>Cost</th> 
+               <th>Quantity</th> 
+               <th>Tax</th> 
+               <th>Issue Date</th> 
+            </tr> 
+         </thead> 
+         <tbody> 
+           
+           <tr> 
+               <th scope="row"><a routerLink="../delivery/{{delivery.deliveryid}}">{{ delivery.deliveryid | uppercase}}</a></th> 
+               <th >{{ itemcost.total }}</th> 
+               <td>{{ itemcost.qty  }}</td> 
+               <td>{{ itemcost.tax  }}</td> 
+               <td>{{ delivery.issuedate }}</td> 
+            </tr> 
+         </tbody> 
+      </table> 
+</div>
    <div class="col sm-4">
       <table class="table table-striped"> 
          <thead> 
