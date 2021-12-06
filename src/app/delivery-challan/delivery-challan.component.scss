@@ -14,6 +14,9 @@ input, textarea{
 
 
 @media screen and (max-width :739px) {
+    .name{
+        font-weight: bold;
+      }
 
     .wrap{
         display: flex;
@@ -21,21 +24,34 @@ input, textarea{
         align-items: center!important;
         align-self: stretch!important;
     }
-    .foo{
+    .foo,.table-header{
         display: none;
     }
 }
 @media screen and (min-width :739px) {
-    
+ .name{
+     display: none;
+ }
  
    
 }
+
 
 .example-full-width {
     width: 100%;
   }
 
 @media print{
+    .table-header{
+       display: table-header-group;
+    }
+    .name{
+        display: none;
+      }
+
+    .container-sm{
+        display: block;
+    }
     .foo{
         display: table-row;;
     }

@@ -40,8 +40,18 @@
       "target": "https://desolate-retreat-47606.herokuapp.com",
       "secure": false,
       "logLevel": "debug",
+      "changeOrigin": true,
       "pathRewrite": {
         "^/deliveries": "https://desolate-retreat-47606.herokuapp.com/deliveries"
       }
+    },"/api/*": {
+      "target": "https://desolate-retreat-47606.herokuapp.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api/*": "https://desolate-retreat-47606.herokuapp.com/api"
+      }
     }
+
   }

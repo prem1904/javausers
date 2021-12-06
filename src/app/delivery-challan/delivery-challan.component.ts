@@ -1,10 +1,10 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Customer, Item, ItemCost } from '../user/user/delivery';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -13,16 +13,21 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './delivery-challan.component.html',
   styleUrls: ['./delivery-challan.component.scss']
 })
-export class DeliveryChallanComponent implements OnInit {
+export class DeliveryChallanComponent implements OnInit  {
   items:Item[]=[];
   itemcost:ItemCost=<ItemCost>{};
   customer:Customer=<Customer>{};
   desc:string="";
   today=this.datepipe.transform(new Date, 'yyyy-MM-dd');
+  location:string="";
  
-  
+  isLoadingResults=false;
 
-  constructor( public datepipe: DatePipe, private formBuilder:FormBuilder,private http:HttpClient,private snapshot:ActivatedRoute) { 
+  constructor( public datepipe: DatePipe, 
+    private formBuilder:FormBuilder
+    ,private http:HttpClient
+    ,private snapshot:ActivatedRoute,
+    private router:Router) { 
     this.itemcost.gst=28.0;
     this.customer.no="INV"+new Date().getMilliseconds();
 
@@ -30,19 +35,27 @@ export class DeliveryChallanComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.snapshot.params.subscribe((data:any)=>{
+  this.snapshot.params.subscribe((data:any)=>{
       this.http.get("/deliveries/"+data.uid).subscribe((data:any)=>{
            this.items=data.item;
            this.itemcost=data.itemCost;
            this.customer=data.customer;
       })
+      
     });
+    // setTimeout(() =>
+    // { 
+    //   this.isLoadingResults=false;
+    //   window.print(); 
+    // }, 3000);
+  
+    // window.onafterprint=(()=>{
+    //   window.close();
+    // })
+    
   }
 
-  printCall(){
-    window.print();
-  }
-
+  
 
   getCost(){
      this.itemcost.subtotal=this.items.map(t => t.cost).reduce((acc, value) => acc + value, 0);
